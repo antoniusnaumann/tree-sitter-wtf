@@ -15,14 +15,14 @@ module.exports = grammar({
     source_file: $ => withNewline($,
       $.newlines,
       optional($.package_header),
-      repeat(seq($.declaration, $.newlines)),
+      repeat(seq($.toplevel, $.newlines)),
       $.newlines,
     ),    
 
 
     package_header: $ => "todo: package",
 
-    declaration: $ => choice(
+    toplevel: $ => choice(
       $.func,
       $.record,
       $.resource,
@@ -59,9 +59,47 @@ module.exports = grammar({
       $.ident,
       ":",
       $.ident,
-      choice($.newline, ",", ";")
+      choice($.newline, ",", ";"),
+      optional($.newlines),
     )),
 
+    _statements: $ => repeat1(seq(
+      $.statement,
+      choice($.newline, ";"),
+      optional($.newlines),
+    )),
+
+
+    statement: $ => choice(
+      $.declaration,
+      $.assignment,
+      $.expression,
+    ),
+
+    declaration: $ => withNewline($,
+      choice("let", "var"),
+      $.ident,
+      optional(withNewline($, ":", $.ident)),
+      optional(withNewline($, "=", $.expression)),
+    ),    
+
+    assignment: $ => withNewline($,
+      // TODO: allow expressions
+      $.ident,
+      $._assignment_operator,
+    ),
+    _assignment_operator: $ => choice(
+      "=",
+      "+=",
+      "-=",
+      "*=",
+      "/=",
+      "?=",
+    ),
+
+    expression: $ => choice(
+      $.ident,
+    ),
     
     ident: $ => /[a-z_][a-z0-9_]*/,
     
