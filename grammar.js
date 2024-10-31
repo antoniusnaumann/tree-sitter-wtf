@@ -14,7 +14,7 @@ module.exports = grammar({
     /\s+/
   ],
   word: $ => $.ident,
-
+  
   rules: {
     source_file: $ => seq(
       optional($.package_header),
@@ -98,11 +98,30 @@ module.exports = grammar({
       $.ident,
       prec.left(seq($.expression, $.binary_operator, $.expression)), 
       $.conditional,
+      $._literal,
+    ),
+
+    _literal: $ => choice(
       $.number,
       $.string,
       $.bool,
-      "none"
+      "none",
+      $.list,
+      $.struct, 
     ),
+
+    list: $ => seq(
+      "[",
+      separatedTrailing($, $.expression, ","),
+      "]",
+    ),
+
+    struct: $ => prec(-1, seq(
+      optional($.ident),
+      "{",
+      separatedTrailing($, seq($.ident, ":", $.expression), ","),
+      "}",
+    )),
 
     conditional: $ => seq(
       "if",

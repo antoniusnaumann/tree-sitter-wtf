@@ -127,11 +127,19 @@
           "named": true
         },
         {
+          "type": "list",
+          "named": true
+        },
+        {
           "type": "number",
           "named": true
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "struct",
           "named": true
         }
       ]
@@ -182,6 +190,21 @@
         },
         {
           "type": "type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "expression",
           "named": true
         }
       ]
@@ -284,6 +307,25 @@
         },
         {
           "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "struct",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "ident",
           "named": true
         }
       ]

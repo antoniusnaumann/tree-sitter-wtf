@@ -29,6 +29,8 @@
 
 (type (ident)) @type
 
+(struct ("{") (ident) @variable.other.member)
+
 (assignment_operator) @operator
 (binary_operator) @operator
 [
