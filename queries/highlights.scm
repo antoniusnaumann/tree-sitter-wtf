@@ -17,10 +17,10 @@
   "throw"
 ] @keyword.control.exception
 
-; [
-;   "if"
-;   "else"
-; ] @keyword.control.conditional
+[
+  "if"
+  "else"
+] @keyword.control.conditional
 
 ; [
 ;   "while"

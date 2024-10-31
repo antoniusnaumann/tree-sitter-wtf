@@ -33,6 +33,29 @@
     "fields": {}
   },
   {
+    "type": "conditional",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "newline",
+          "named": true
+        },
+        {
+          "type": "statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "control",
     "named": true,
     "fields": {},
@@ -80,6 +103,10 @@
       "types": [
         {
           "type": "binary_operator",
+          "named": true
+        },
+        {
+          "type": "conditional",
           "named": true
         },
         {
@@ -273,11 +300,15 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
           "type": "ident",
+          "named": true
+        },
+        {
+          "type": "type",
           "named": true
         }
       ]
@@ -289,6 +320,10 @@
   },
   {
     "type": "\r",
+    "named": false
+  },
+  {
+    "type": "!",
     "named": false
   },
   {
@@ -392,6 +427,14 @@
     "named": false
   },
   {
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "]",
+    "named": false
+  },
+  {
     "type": "break",
     "named": false
   },
@@ -404,12 +447,20 @@
     "named": false
   },
   {
+    "type": "else",
+    "named": false
+  },
+  {
     "type": "func",
     "named": false
   },
   {
     "type": "ident",
     "named": true
+  },
+  {
+    "type": "if",
+    "named": false
   },
   {
     "type": "in",

@@ -94,13 +94,31 @@ module.exports = grammar({
       optional($.expression),
     ),
 
-    expression: $ => prec.left(choice(
+    expression: $ => choice(
       $.ident,
-      seq($.expression, $.binary_operator, $.expression)
-    )),
+      prec.left(seq($.expression, $.binary_operator, $.expression)), 
+      $.conditional,
+    ),
+
+    conditional: $ => seq(
+      "if",
+      $.expression,
+      "{",
+      separatedTrailing($, $.statement, choice($.newline, ";")),
+      "}",
+      optional(seq(
+        "else",
+        "{",
+        separatedTrailing($, $.statement, choice($.newline, ";")),
+        "}",
+      ))
+    ),
 
     type: $ => choice(
       $.ident,
+      seq("[", $.type, "]"),
+      seq($.type, "?"),
+      prec.right(seq($.type, "!", optional($.type)))
     ),
     
     assignment_operator: $ => choice(
