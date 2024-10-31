@@ -1,16 +1,16 @@
 
 // a point in 3D space
-record point {
-	x: i32
-	y: i32
-	z: i32
+export record point {
+	x: s32
+	y: s32
+	z: s32
 }
 
-func add(a: i32, b: i32) -> i32 {
+func add(a: s32, b: s32) -> s32 {
 	return a + b
 }
 
-func trunc_mul(x: i32, f: i32, threshold: i32) -> i32 {
+func trunc_mul(x: s32, f: s32, threshold: s32) -> s32 {
 	let y = x * f
 
 	if y > threshold {
@@ -20,7 +20,7 @@ func trunc_mul(x: i32, f: i32, threshold: i32) -> i32 {
 	}
 }
 
-func safe_div(a: i32, b: i32) -> i32! {
+func safe_div(a: s32, b: s32) -> s32! {
 	if b == 0 {
 		throw "Divisor is 0"
 	}
@@ -28,7 +28,7 @@ func safe_div(a: i32, b: i32) -> i32! {
 	return a / b
 }
 
-func or_default(original: point?) -> point {
+export func or_default(original: point?) -> point {
 	original ?= point { x: 0, y: 0, z: 0 }
 
 	return original
@@ -38,11 +38,15 @@ func append_twice(list: [u8], element: u8) -> [u8] {
 	return list + [element, element]
 }
 
-func is_none(a: point?) -> bool {
+export func is_none(a: point?) -> bool {
 	// we use if-else here just to test boolean constant highlighting
 	return if a == none {
 		true
 	} else {
 		false
 	}
+}
+
+export func is_origin(p: point) -> bool {
+	return p.x == 0 && p.y == 0 && p.z == 0
 }

@@ -38,6 +38,25 @@
     "fields": {}
   },
   {
+    "type": "call",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "ident",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "conditional",
     "named": true,
     "fields": {},
@@ -131,6 +150,14 @@
           "named": true
         },
         {
+          "type": "loop",
+          "named": true
+        },
+        {
+          "type": "member_call",
+          "named": true
+        },
+        {
           "type": "number",
           "named": true
         },
@@ -209,6 +236,61 @@
         }
       ]
     }
+  },
+  {
+    "type": "loop",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "newline",
+          "named": true
+        },
+        {
+          "type": "statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "member_call",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "call",
+          "named": true
+        },
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "ident",
+          "named": true
+        },
+        {
+          "type": "member_operator",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "member_operator",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "newline",
@@ -438,6 +520,10 @@
     "named": false
   },
   {
+    "type": ".",
+    "named": false
+  },
+  {
     "type": "/",
     "named": false
   },
@@ -482,6 +568,10 @@
     "named": false
   },
   {
+    "type": "?.",
+    "named": false
+  },
+  {
     "type": "?=",
     "named": false
   },
@@ -510,7 +600,15 @@
     "named": false
   },
   {
+    "type": "export",
+    "named": false
+  },
+  {
     "type": "false",
+    "named": false
+  },
+  {
+    "type": "for",
     "named": false
   },
   {
@@ -571,6 +669,10 @@
   },
   {
     "type": "var",
+    "named": false
+  },
+  {
+    "type": "while",
     "named": false
   },
   {

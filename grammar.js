@@ -24,10 +24,13 @@ module.exports = grammar({
 
     package_header: $ => "todo: package",
 
-    toplevel: $ => choice(
-      $.func,
-      $.record,
-      $.resource,
+    toplevel: $ => seq(
+      optional(token("export")),
+      choice(
+        $.func,
+        $.record,
+        $.resource,
+      )
     ),
 
 
@@ -96,10 +99,28 @@ module.exports = grammar({
 
     expression: $ => choice(
       $.ident,
-      prec.left(seq($.expression, $.binary_operator, $.expression)), 
+      prec.left(5, seq($.expression, $.binary_operator, $.expression)), 
+      $.member_call,
       $.conditional,
+      $.loop,
       $._literal,
     ),
+
+    member_call: $ => prec.left(4, 
+      seq(
+        $.expression, 
+        $.member_operator,
+        choice($.ident, $.call),
+      ),
+    ),
+
+    call: $ => seq(
+      $.ident,
+      "(",
+      separatedTrailing($, $.expression, ","),
+      ")",
+    ),
+
 
     _literal: $ => choice(
       $.number,
@@ -137,12 +158,22 @@ module.exports = grammar({
       ))
     ),
 
+    loop: $ => seq(
+      choice("while", "for"),
+      $.expression,
+      "{",
+      separatedTrailing($, $.statement, choice($.newline, ";")),
+      "}"
+    ),
+
     type: $ => choice(
       $.ident,
       seq("[", $.type, "]"),
       seq($.type, "?"),
       prec.right(seq($.type, "!", optional($.type)))
     ),
+    
+    member_operator: $ => choice(".", "?."), 
     
     assignment_operator: $ => choice(
       "=",
