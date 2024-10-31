@@ -98,6 +98,10 @@ module.exports = grammar({
       $.ident,
       prec.left(seq($.expression, $.binary_operator, $.expression)), 
       $.conditional,
+      $.number,
+      $.string,
+      $.bool,
+      "none"
     ),
 
     conditional: $ => seq(
@@ -150,6 +154,11 @@ module.exports = grammar({
     ),
     
     ident: $ => /[a-z_][a-z0-9_]*/,
+
+    // Allows for scientific notation
+    number: $ => /\d+(\.\d+)?([eE][+-]?\d+)?/,
+    string: $ => /"([^"\\]|\\.)*"/,
+    bool: $ => choice("true", "false"),
     
     newline: $ => choice(
       "\n",

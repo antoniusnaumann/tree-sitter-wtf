@@ -33,6 +33,11 @@
     "fields": {}
   },
   {
+    "type": "bool",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "conditional",
     "named": true,
     "fields": {},
@@ -99,10 +104,14 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "binary_operator",
+          "named": true
+        },
+        {
+          "type": "bool",
           "named": true
         },
         {
@@ -115,6 +124,14 @@
         },
         {
           "type": "ident",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         }
       ]
@@ -451,6 +468,10 @@
     "named": false
   },
   {
+    "type": "false",
+    "named": false
+  },
+  {
     "type": "func",
     "named": false
   },
@@ -471,6 +492,14 @@
     "named": false
   },
   {
+    "type": "none",
+    "named": false
+  },
+  {
+    "type": "number",
+    "named": true
+  },
+  {
     "type": "package_header",
     "named": true
   },
@@ -487,7 +516,15 @@
     "named": false
   },
   {
+    "type": "string",
+    "named": true
+  },
+  {
     "type": "throw",
+    "named": false
+  },
+  {
+    "type": "true",
     "named": false
   },
   {

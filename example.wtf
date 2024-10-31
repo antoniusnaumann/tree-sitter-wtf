@@ -33,3 +33,16 @@ func or_default(original: point?) -> point {
 
 	return original
 }
+
+func append_twice(list: [u8], element: u8) -> [u8] {
+	return list + [element, element]
+}
+
+func is_none(a: point?) -> bool {
+	// we use if-else here just to test boolean constant highlighting
+	return if a == none {
+		true
+	} else {
+		false
+	}
+}
