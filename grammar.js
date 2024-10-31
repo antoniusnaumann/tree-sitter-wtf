@@ -13,6 +13,7 @@ module.exports = grammar({
     $.comment,
     /\s+/
   ],
+  word: $ => $.ident,
 
   rules: {
     source_file: $ => seq(
@@ -87,6 +88,21 @@ module.exports = grammar({
       $.assignment_operator,
       $.expression,
     ),
+
+    control: $ => seq(
+      choice(token("return"), token("throw"), token("break"), token("continue")),
+      optional($.expression),
+    ),
+
+    expression: $ => prec.left(choice(
+      $.ident,
+      seq($.expression, $.binary_operator, $.expression)
+    )),
+
+    type: $ => choice(
+      $.ident,
+    ),
+    
     assignment_operator: $ => choice(
       "=",
       "+=",
@@ -96,17 +112,23 @@ module.exports = grammar({
       "?=",
     ),
 
-    control: $ => seq(
-      choice(token("return"), token("throw"), token("break"), token("continue")),
-      optional($.expression),
-    ),
-
-    expression: $ => choice(
-      $.ident,
-    ),
-
-    type: $ => choice(
-      $.ident,
+    binary_operator: $ => choice(
+      "+",
+      "-",
+      "*", 
+      "/",
+      "?",
+      "&&",
+      "||",
+      "&",
+      "|", 
+      "==",
+      "!=",
+      "<=",
+      ">=",
+      "<",
+      ">",
+      "in"
     ),
     
     ident: $ => /[a-z_][a-z0-9_]*/,

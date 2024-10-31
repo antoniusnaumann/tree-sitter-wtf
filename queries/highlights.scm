@@ -30,5 +30,9 @@
 (type) @type
 
 (assignment_operator) @operator
+(binary_operator) @operator
+[
+  "in"
+] @keyword.operator
 
 (comment) @comment

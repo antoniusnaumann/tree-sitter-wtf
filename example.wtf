@@ -27,3 +27,9 @@ func safe_div(a: i32, b: i32) -> i32! {
 
 	return a / b
 }
+
+func or_default(original: point?) -> point {
+	original ?= point { x: 0, y: 0, z: 0 }
+
+	return original
+}
