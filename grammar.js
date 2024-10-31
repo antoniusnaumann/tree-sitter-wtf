@@ -9,15 +9,16 @@
 
 module.exports = grammar({
   name: "wtf",
-  extras: _ => ["\t", " "],
+  extras: $ => [
+    $.comment,
+    /\s+/
+  ],
 
   rules: {
-    source_file: $ => withNewline($,
-      $.newlines,
+    source_file: $ => seq(
       optional($.package_header),
-      repeat(seq($.toplevel, $.newlines)),
-      $.newlines,
-    ),    
+      repeat($.toplevel),
+   ),    
 
 
     package_header: $ => "todo: package",
@@ -29,66 +30,64 @@ module.exports = grammar({
     ),
 
 
-    func: $ => withNewline($,
+    func: $ => seq(
       token("func"),
       $.ident,
       "(",
+      separatedTrailing($, $.field, ","),
       ")",
+      optional(seq("->", $.type)),
       "{",
+      separatedTrailing($, $.statement, choice($.newline, ";")),
       "}",
     ),    
  
-    record: $ => withNewline($,
+    record: $ => seq(
       token("record"),
       $.ident,
       "{",
-      optional($._fields),
+      separatedTrailing($, $.field, choice($.newline, ",")),
       "}"
     ),
 
-    resource: $ => withNewline($,
+    resource: $ => seq(
       token("resource"),
       $.ident, 
-      $._fields,
+      "{",
+      separatedTrailing($, $.field, choice($.newline, ";")),
       // TODO: constructor
-      repeat(seq($.func, $.newlines)),
+      repeat($.func),
+      "}",
     ),
 
 
-    _fields: $ => repeat1(seq(
+    field: $ => seq(
       $.ident,
       ":",
-      $.ident,
-      choice($.newline, ",", ";"),
-      optional($.newlines),
-    )),
-
-    _statements: $ => repeat1(seq(
-      $.statement,
-      choice($.newline, ";"),
-      optional($.newlines),
-    )),
-
+      $.type,
+    ),
 
     statement: $ => choice(
       $.declaration,
       $.assignment,
+      $.control,
       $.expression,
     ),
 
-    declaration: $ => withNewline($,
-      choice("let", "var"),
+    declaration: $ => seq(
+      choice(token("let"), token("var")),
       $.ident,
-      optional(withNewline($, ":", $.ident)),
-      optional(withNewline($, "=", $.expression)),
+      optional(seq(":", $.type)),
+      optional(seq("=", $.expression)),
     ),    
 
-    assignment: $ => withNewline($,
+    assignment: $ => seq(
       // TODO: allow expressions
       $.ident,
-      $._assignment_operator,
+      $.assignment_operator,
+      $.expression,
     ),
-    _assignment_operator: $ => choice(
+    assignment_operator: $ => choice(
       "=",
       "+=",
       "-=",
@@ -97,13 +96,21 @@ module.exports = grammar({
       "?=",
     ),
 
+    control: $ => seq(
+      choice(token("return"), token("throw"), token("break"), token("continue")),
+      optional($.expression),
+    ),
+
     expression: $ => choice(
+      $.ident,
+    ),
+
+    type: $ => choice(
       $.ident,
     ),
     
     ident: $ => /[a-z_][a-z0-9_]*/,
     
-    newlines: $ => seq($.newline),
     newline: $ => choice(
       "\n",
       "\r",
@@ -113,9 +120,19 @@ module.exports = grammar({
   }
 });
 
-function withNewline($, ...rules) {
+function separatedTrailing($, rule, delim) {
+  return optional(seq(
+    rule,
+    repeat(seq(delim, rule)),
+    optional(delim)
+  ));
+}
+
+function separatedTrailing1($, rule, delim) {
   return seq(
-    rules[0],
-    ...rules.slice(1).flatMap(rule => [$.newlines, rule])
+    rule,
+    repeat(seq(delim, rule)),
+    optional(delim)
   );
 }
+

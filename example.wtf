@@ -1,0 +1,29 @@
+
+// a point in 3D space
+record point {
+	x: i32
+	y: i32
+	z: i32
+}
+
+func add(a: i32, b: i32) -> i32 {
+	return a + b
+}
+
+func trunc_mul(x: i32, f: i32, threshold: i32) -> i32 {
+	let y = x * f
+
+	if y > threshold {
+		return threshold
+	} else {
+		return y
+	}
+}
+
+func safe_div(a: i32, b: i32) -> i32! {
+	if b == 0 {
+		throw "Divisor is 0"
+	}
+
+	return a / b
+}

@@ -50,7 +50,8 @@
   "tree-sitter": [
     {
       "scope": "source.wtf",
-      "injection-regex": "^wtf$"
+      "injection-regex": "^wtf$",
+      "highlights": "queries/highlights.scm"
     }
   ]
 }

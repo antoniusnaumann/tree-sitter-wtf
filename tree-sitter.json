@@ -5,8 +5,11 @@
       "camelcase": "Wtf",
       "scope": "source.wtf",
       "path": ".",
-      "file-types": null,
-      "injection-regex": "^wtf$"
+      "file-types": [
+        "wtf"
+      ],
+      "injection-regex": "^wtf$",
+      "highlights": "queries/highlights.scm"
     }
   ],
   "metadata": {

@@ -1,6 +1,87 @@
 [
   {
-    "type": "func",
+    "type": "assignment",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "assignment_operator",
+          "named": true
+        },
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "ident",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "assignment_operator",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "control",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "ident",
+          "named": true
+        },
+        {
+          "type": "type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "ident",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "field",
     "named": true,
     "fields": {},
     "children": {
@@ -12,7 +93,38 @@
           "named": true
         },
         {
-          "type": "newlines",
+          "type": "type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "func",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "field",
+          "named": true
+        },
+        {
+          "type": "ident",
+          "named": true
+        },
+        {
+          "type": "newline",
+          "named": true
+        },
+        {
+          "type": "statement",
+          "named": true
+        },
+        {
+          "type": "type",
           "named": true
         }
       ]
@@ -24,21 +136,6 @@
     "fields": {}
   },
   {
-    "type": "newlines",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "newline",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "record",
     "named": true,
     "fields": {},
@@ -47,15 +144,15 @@
       "required": true,
       "types": [
         {
+          "type": "field",
+          "named": true
+        },
+        {
           "type": "ident",
           "named": true
         },
         {
           "type": "newline",
-          "named": true
-        },
-        {
-          "type": "newlines",
           "named": true
         }
       ]
@@ -70,6 +167,10 @@
       "required": true,
       "types": [
         {
+          "type": "field",
+          "named": true
+        },
+        {
           "type": "func",
           "named": true
         },
@@ -79,10 +180,6 @@
         },
         {
           "type": "newline",
-          "named": true
-        },
-        {
-          "type": "newlines",
           "named": true
         }
       ]
@@ -95,18 +192,41 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
-        {
-          "type": "newlines",
-          "named": true
-        },
         {
           "type": "package_header",
           "named": true
         },
         {
           "type": "toplevel",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "assignment",
+          "named": true
+        },
+        {
+          "type": "control",
+          "named": true
+        },
+        {
+          "type": "declaration",
+          "named": true
+        },
+        {
+          "type": "expression",
           "named": true
         }
       ]
@@ -136,6 +256,21 @@
     }
   },
   {
+    "type": "type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "ident",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "\n",
     "named": false
   },
@@ -152,7 +287,27 @@
     "named": false
   },
   {
+    "type": "*=",
+    "named": false
+  },
+  {
+    "type": "+=",
+    "named": false
+  },
+  {
     "type": ",",
+    "named": false
+  },
+  {
+    "type": "-=",
+    "named": false
+  },
+  {
+    "type": "->",
+    "named": false
+  },
+  {
+    "type": "/=",
     "named": false
   },
   {
@@ -164,12 +319,36 @@
     "named": false
   },
   {
+    "type": "=",
+    "named": false
+  },
+  {
+    "type": "?=",
+    "named": false
+  },
+  {
+    "type": "break",
+    "named": false
+  },
+  {
+    "type": "comment",
+    "named": true
+  },
+  {
+    "type": "continue",
+    "named": false
+  },
+  {
     "type": "func",
     "named": false
   },
   {
     "type": "ident",
     "named": true
+  },
+  {
+    "type": "let",
+    "named": false
   },
   {
     "type": "package_header",
@@ -181,6 +360,18 @@
   },
   {
     "type": "resource",
+    "named": false
+  },
+  {
+    "type": "return",
+    "named": false
+  },
+  {
+    "type": "throw",
+    "named": false
+  },
+  {
+    "type": "var",
     "named": false
   },
   {
