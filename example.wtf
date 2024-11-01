@@ -31,6 +31,12 @@ func trunc_mul(x: s32, f: s32, threshold: s32) -> s32 {
 	}
 }
 
+func call_safe_div(a: s32, b: s32) -> s32!error {
+	let res = safe_div(a, b)!
+
+	return res
+}
+
 func safe_div(a: s32, b: s32) -> s32! {
 	if b == 0 {
 		throw "Divisor is 0"

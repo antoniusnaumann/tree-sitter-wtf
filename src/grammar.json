@@ -1040,6 +1040,10 @@
           "name": "call"
         },
         {
+          "type": "SYMBOL",
+          "name": "yeet"
+        },
+        {
           "type": "PREC_LEFT",
           "value": 5,
           "content": {
@@ -1167,6 +1171,19 @@
         {
           "type": "STRING",
           "value": ")"
+        }
+      ]
+    },
+    "yeet": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "expression"
+        },
+        {
+          "type": "STRING",
+          "value": "!"
         }
       ]
     },

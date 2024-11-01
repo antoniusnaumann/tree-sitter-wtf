@@ -95,6 +95,7 @@
 [
   "="
 ] @operator
+(yeet ("!" @operator))
 
 [
   "in"

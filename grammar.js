@@ -130,6 +130,7 @@ module.exports = grammar({
     expression: $ => choice(
       $.ident,
       $.call,
+      $.yeet,
       prec.left(5, seq($.expression, $.binary_operator, $.expression)), 
       $.member_call,
       $.conditional,
@@ -152,7 +153,11 @@ module.exports = grammar({
       ")",
     ),
 
-
+    yeet: $ => seq(
+      $.expression,
+      "!",
+    ),
+    
     _literal: $ => choice(
       $.number,
       $.string,
