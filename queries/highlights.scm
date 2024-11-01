@@ -6,6 +6,7 @@
   "resource"
   "enum"
   "variant"
+  "constructor"
 ] @keyword
 
 [
@@ -87,6 +88,7 @@
 
 ; TODO: Also highlight variables via scoping later (can tree sitter do this?)
 (func (field (ident) @variable.parameter ":"))
+(constructor (field (ident) @variable.parameter ":"))
 
 (assignment_operator) @operator
 (binary_operator) @operator

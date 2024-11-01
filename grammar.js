@@ -60,10 +60,22 @@ module.exports = grammar({
       token("resource"),
       $.ident, 
       "{",
-      separatedTrailing($, $.field, choice($.newline, ";")),
-      // TODO: constructor
-      repeat($.func),
+      repeat(choice(
+        seq($.field, choice($.newline, ";")),
+        $.constructor,
+        $.func
+      )),
       "}",
+    ),
+
+    constructor: $ => seq(
+      "constructor", 
+      "(", 
+      separatedTrailing($, $.field, ","), 
+      ")", 
+      "{", 
+      separatedTrailing($, $.statement, choice($.newline, ";")),
+      "}"
     ),
 
     enum: $ => seq(

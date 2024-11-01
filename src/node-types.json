@@ -80,6 +80,29 @@
     }
   },
   {
+    "type": "constructor",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "field",
+          "named": true
+        },
+        {
+          "type": "newline",
+          "named": true
+        },
+        {
+          "type": "statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "control",
     "named": true,
     "fields": {},
@@ -355,6 +378,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "constructor",
+          "named": true
+        },
         {
           "type": "field",
           "named": true
@@ -648,6 +675,10 @@
   {
     "type": "comment",
     "named": true
+  },
+  {
+    "type": "constructor",
+    "named": false
   },
   {
     "type": "continue",
