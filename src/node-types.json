@@ -118,6 +118,25 @@
     }
   },
   {
+    "type": "enum",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "ident",
+          "named": true
+        },
+        {
+          "type": "newline",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "expression",
     "named": true,
     "fields": {},
@@ -131,6 +150,10 @@
         },
         {
           "type": "bool",
+          "named": true
+        },
+        {
+          "type": "call",
           "named": true
         },
         {
@@ -426,6 +449,10 @@
       "required": true,
       "types": [
         {
+          "type": "enum",
+          "named": true
+        },
+        {
           "type": "func",
           "named": true
         },
@@ -435,6 +462,10 @@
         },
         {
           "type": "resource",
+          "named": true
+        },
+        {
+          "type": "variant",
           "named": true
         }
       ]
@@ -454,6 +485,29 @@
         },
         {
           "type": "type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "variant",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "field",
+          "named": true
+        },
+        {
+          "type": "ident",
+          "named": true
+        },
+        {
+          "type": "newline",
           "named": true
         }
       ]
@@ -604,6 +658,10 @@
     "named": false
   },
   {
+    "type": "enum",
+    "named": false
+  },
+  {
     "type": "export",
     "named": false
   },
@@ -673,6 +731,10 @@
   },
   {
     "type": "var",
+    "named": false
+  },
+  {
+    "type": "variant",
     "named": false
   },
   {

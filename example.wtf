@@ -1,3 +1,14 @@
+enum color {
+	blue
+	green
+	yellow
+	magenta
+}
+
+variant color {
+	rgb(r: u8, g: u8, b: u8)
+	grayscale(luminance: f64)
+}
 
 // a point in 3D space
 export record point {

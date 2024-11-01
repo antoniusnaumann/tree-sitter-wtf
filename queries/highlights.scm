@@ -4,8 +4,8 @@
   "func"
   "record"
   "resource"
-  ; "enum"
-  ; "variant"
+  "enum"
+  "variant"
 ] @keyword
 
 [
@@ -62,13 +62,15 @@
 ] @punctuation.delimiter
 
 (func (ident) @function)
-((call
-  (ident) @function.call)
-)
+(call (ident) @function.call)
 (member_call (member_operator) (call (ident) @method.call))
 
 (type (ident)) @type
 (type (ident) @type.builtin (#match? @type.builtin "^(s8|s16|s32|s64|u8|u16|u32|u64|f32|f64|bool|char|string)$"))
+(enum (ident) @type.enum ("{"))
+(enum ("{") (ident) @type.enum.variant)
+(variant (ident) @type.enum ("{"))
+(variant ("{") (ident) @type.enum.variant)
 
 (struct ("{") (ident) @variable.other.member)
 (member_call (member_operator) (ident) @variable.other.member)
@@ -83,6 +85,7 @@
   "in"
 ] @keyword.operator
 
+(statement (_ (ident)) @variable) 
 (string) @string
 (number) @constant.numeric
 (bool) @constant.builtin.boolean

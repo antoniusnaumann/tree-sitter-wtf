@@ -30,6 +30,8 @@ module.exports = grammar({
         $.func,
         $.record,
         $.resource,
+        $.enum,
+        $.variant,
       )
     ),
 
@@ -61,6 +63,22 @@ module.exports = grammar({
       separatedTrailing($, $.field, choice($.newline, ";")),
       // TODO: constructor
       repeat($.func),
+      "}",
+    ),
+
+    enum: $ => seq(
+      token("enum"),
+      $.ident,
+      "{",
+      separatedTrailing($, $.ident, choice($.newline, ",")),
+      "}",
+    ),
+
+    variant: $ => seq(
+      token("variant"),
+      $.ident,
+      "{",
+      separatedTrailing($, seq($.ident, optional(seq("(", separatedTrailing($, $.field, ","), ")"))), choice($.newline, ",")),
       "}",
     ),
 
@@ -99,6 +117,7 @@ module.exports = grammar({
 
     expression: $ => choice(
       $.ident,
+      $.call,
       prec.left(5, seq($.expression, $.binary_operator, $.expression)), 
       $.member_call,
       $.conditional,
