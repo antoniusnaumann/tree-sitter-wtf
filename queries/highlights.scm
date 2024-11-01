@@ -14,6 +14,11 @@
 ] @keyword.storage
 
 [
+  "break"
+  "continue"
+] @keyword.control
+
+[
   "return"
 ] @keyword.control.return
 
@@ -65,6 +70,9 @@
 (call (ident) @function.call)
 (member_call (member_operator) (call (ident) @method.call))
 
+((ident) @variable.builtin (#match? @variable.builtin "self"))
+(resource (ident) @type ("{") )
+(record (ident) @type ("{"))
 (type (ident)) @type
 (type (ident) @type.builtin (#match? @type.builtin "^(s8|s16|s32|s64|u8|u16|u32|u64|f32|f64|bool|char|string)$"))
 (enum (ident) @type.enum ("{"))
@@ -75,6 +83,7 @@
 (record ("{") (field (ident) @variable.other.member))
 (variant (field ((ident) @variable.other.member)))
 (member_call (member_operator) (ident) @variable.other.member)
+(resource ("{") (field (ident) @variable.other.member))
 
 ; TODO: Also highlight variables via scoping later (can tree sitter do this?)
 (func (field (ident) @variable.parameter ":"))

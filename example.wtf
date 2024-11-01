@@ -62,3 +62,19 @@ export func is_none(a: point?) -> bool {
 export func is_origin(p: point) -> bool {
 	return p.x == 0 && p.y == 0 && p.z == 0
 }
+
+resource car {
+	km_driven: u64
+
+	constructor(driven: u64) {
+		self.km_driven = driven
+	}
+
+	func drive(km: u64) {
+		self.km_driven += km
+	}
+
+	func honk() {
+		print("Honk!")
+	}
+}
