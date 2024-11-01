@@ -72,9 +72,11 @@
 (variant (ident) @type.enum ("{"))
 (variant ("{") (ident) @type.enum.variant)
 
-(struct ("{") (ident) @variable.other.member)
+(record ("{") (field (ident) @variable.other.member))
+(variant (field ((ident) @variable.other.member)))
 (member_call (member_operator) (ident) @variable.other.member)
 
+; TODO: Also highlight variables via scoping later (can tree sitter do this?)
 (func (field (ident) @variable.parameter ":"))
 
 (assignment_operator) @operator
