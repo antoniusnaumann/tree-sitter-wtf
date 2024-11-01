@@ -200,6 +200,7 @@ module.exports = grammar({
     _literal: $ => choice(
       $.number,
       $.string,
+      $.char,
       $.bool,
       "none",
       $.list,
@@ -283,6 +284,7 @@ module.exports = grammar({
     // Allows for scientific notation
     number: $ => /\d+(\.\d+)?([eE][+-]?\d+)?/,
     string: $ => /"([^"\\]|\\.)*"/,
+    char: $ => /'([^'\\]|\\.)*'/,
     bool: $ => choice("true", "false"),
     
     newline: $ => choice(

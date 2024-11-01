@@ -107,6 +107,7 @@
 
 (statement (_ (ident)) @variable) 
 (string) @string
+(char) @constant.character
 (number) @constant.numeric
 (bool) @constant.builtin.boolean
 [

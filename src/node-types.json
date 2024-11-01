@@ -195,6 +195,10 @@
           "named": true
         },
         {
+          "type": "char",
+          "named": true
+        },
+        {
           "type": "conditional",
           "named": true
         },
@@ -794,6 +798,10 @@
   {
     "type": "break",
     "named": false
+  },
+  {
+    "type": "char",
+    "named": true
   },
   {
     "type": "comment",
