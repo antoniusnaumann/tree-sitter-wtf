@@ -167,8 +167,17 @@
               "type": "SEQ",
               "members": [
                 {
-                  "type": "SYMBOL",
-                  "name": "statement"
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "statement"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "func"
+                    }
+                  ]
                 },
                 {
                   "type": "REPEAT",
@@ -189,8 +198,17 @@
                         ]
                       },
                       {
-                        "type": "SYMBOL",
-                        "name": "statement"
+                        "type": "CHOICE",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "statement"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "func"
+                          }
+                        ]
                       }
                     ]
                   }

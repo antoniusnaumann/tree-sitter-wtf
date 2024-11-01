@@ -42,7 +42,7 @@ module.exports = grammar({
       ")",
       optional(seq("->", $.type)),
       "{",
-      separatedTrailing($, $.statement, choice($.newline, ";")),
+      separatedTrailing($, choice($.statement, $.func), choice($.newline, ";")),
       "}",
     ),    
  

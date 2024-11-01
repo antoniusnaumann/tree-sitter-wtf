@@ -204,6 +204,10 @@
           "named": true
         },
         {
+          "type": "func",
+          "named": true
+        },
+        {
           "type": "ident",
           "named": true
         },
