@@ -135,7 +135,7 @@ module.exports = grammar({
 
     assignment: $ => seq(
       // TODO: allow expressions
-      $.ident,
+      choice($.ident, $.member_call),
       $.assignment_operator,
       $.expression,
     ),

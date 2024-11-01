@@ -18,6 +18,10 @@
         {
           "type": "ident",
           "named": true
+        },
+        {
+          "type": "member_call",
+          "named": true
         }
       ]
     }
