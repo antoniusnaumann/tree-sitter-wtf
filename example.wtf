@@ -1,3 +1,5 @@
+package antoniusnaumann:example@0.1.0;
+
 enum color {
 	blue
 	green

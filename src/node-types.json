@@ -352,6 +352,40 @@
     "fields": {}
   },
   {
+    "type": "package_header",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "path",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "path",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "ident",
+          "named": true
+        },
+        {
+          "type": "version",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "record",
     "named": true,
     "fields": {},
@@ -680,6 +714,10 @@
     "named": false
   },
   {
+    "type": "@",
+    "named": false
+  },
+  {
     "type": "[",
     "named": false
   },
@@ -752,8 +790,8 @@
     "named": true
   },
   {
-    "type": "package_header",
-    "named": true
+    "type": "package",
+    "named": false
   },
   {
     "type": "record",
@@ -786,6 +824,10 @@
   {
     "type": "variant",
     "named": false
+  },
+  {
+    "type": "version",
+    "named": true
   },
   {
     "type": "while",

@@ -22,7 +22,25 @@ module.exports = grammar({
    ),    
 
 
-    package_header: $ => "todo: package",
+    package_header: $ => seq(
+      "package",
+      $.path,
+    ),
+
+    path: $ => seq(
+      $.ident,
+      ":",
+      $.ident,
+      optional(
+        seq(
+          "@",
+          $.version,
+        )
+      ),
+      optional(";"),
+    ),
+
+    version: $ => /\d+\.\d+\.\d+(-[0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*)?(\+[0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*)?/,
 
     toplevel: $ => seq(
       optional(token("export")),

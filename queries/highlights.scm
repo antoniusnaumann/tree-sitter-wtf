@@ -41,6 +41,7 @@
   ; "import"
   "export"
   ; "use"
+  "package"
 ] @keyword.import
 
 [
@@ -57,7 +58,7 @@
 ;  "::"
   ";"
   ","
-;  "@"
+  "@"
   "->"
 ;  "=>"
   "."
@@ -110,3 +111,6 @@
 ] @constant.builtin.null
 
 (comment) @comment.line
+
+(path) @namespace
+(version) @constant.numeric.version
