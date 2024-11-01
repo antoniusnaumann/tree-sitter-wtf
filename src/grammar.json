@@ -625,8 +625,12 @@
               "type": "SEQ",
               "members": [
                 {
-                  "type": "SYMBOL",
-                  "name": "ident"
+                  "type": "FIELD",
+                  "name": "case",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "ident"
+                  }
                 },
                 {
                   "type": "REPEAT",
@@ -647,8 +651,12 @@
                         ]
                       },
                       {
-                        "type": "SYMBOL",
-                        "name": "ident"
+                        "type": "FIELD",
+                        "name": "case",
+                        "content": {
+                          "type": "SYMBOL",
+                          "name": "ident"
+                        }
                       }
                     ]
                   }
@@ -715,8 +723,12 @@
                   "type": "SEQ",
                   "members": [
                     {
-                      "type": "SYMBOL",
-                      "name": "ident"
+                      "type": "FIELD",
+                      "name": "case",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "ident"
+                      }
                     },
                     {
                       "type": "CHOICE",
@@ -808,8 +820,12 @@
                         "type": "SEQ",
                         "members": [
                           {
-                            "type": "SYMBOL",
-                            "name": "ident"
+                            "type": "FIELD",
+                            "name": "case",
+                            "content": {
+                              "type": "SYMBOL",
+                              "name": "ident"
+                            }
                           },
                           {
                             "type": "CHOICE",

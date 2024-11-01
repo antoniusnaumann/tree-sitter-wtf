@@ -100,7 +100,7 @@ module.exports = grammar({
       token("enum"),
       $.ident,
       "{",
-      separatedTrailing($, $.ident, choice($.newline, ",")),
+      separatedTrailing($, field("case", $.ident), choice($.newline, ",")),
       "}",
     ),
 
@@ -108,7 +108,7 @@ module.exports = grammar({
       token("variant"),
       $.ident,
       "{",
-      separatedTrailing($, seq($.ident, optional(seq("(", separatedTrailing($, $.field, ","), ")"))), choice($.newline, ",")),
+      separatedTrailing($, seq(field("case", $.ident), optional(seq("(", separatedTrailing($, $.field, ","), ")"))), choice($.newline, ",")),
       "}",
     ),
 

@@ -143,7 +143,18 @@
   {
     "type": "enum",
     "named": true,
-    "fields": {},
+    "fields": {
+      "case": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "ident",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
@@ -558,7 +569,18 @@
   {
     "type": "variant",
     "named": true,
-    "fields": {},
+    "fields": {
+      "case": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "ident",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,

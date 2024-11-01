@@ -78,9 +78,9 @@
 (type (ident)) @type
 (type (ident) @type.builtin (#match? @type.builtin "^(s8|s16|s32|s64|u8|u16|u32|u64|f32|f64|bool|char|string)$"))
 (enum (ident) @type.enum ("{"))
-(enum ("{") (ident) @type.enum.variant)
+(enum case: (ident) @type.enum.variant)
 (variant (ident) @type.enum ("{"))
-(variant ("{") (ident) @type.enum.variant)
+(variant case: (ident) @type.enum.variant)
 
 (record ("{") (field (ident) @variable.other.member))
 (variant (field ((ident) @variable.other.member)))
@@ -112,5 +112,5 @@
 
 (comment) @comment.line
 
-(path) @namespace
+(path (ident) @namespace)
 (version) @constant.numeric.version
