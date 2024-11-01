@@ -1,5 +1,8 @@
 package antoniusnaumann:example@0.1.0;
 
+use numbers:bigint/bigint.u128
+use motorcorp:vehicles/eco.{train, bicycle}
+
 enum color {
 	blue
 	green

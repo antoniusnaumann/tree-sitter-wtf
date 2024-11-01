@@ -18,9 +18,30 @@ module.exports = grammar({
   rules: {
     source_file: $ => seq(
       optional($.package_header),
+      repeat($.use),
       repeat($.toplevel),
-   ),    
+    ),    
 
+    use: $ => seq(
+      "use",
+      $.path,
+      "/",
+      field("interface", $.ident),
+      optional(
+        seq(
+          ".",
+          choice(
+            seq(  
+              "{",
+              separatedTrailing($, field("item", $.ident), ","),
+              "}"
+            ),
+            field("item", $.ident)
+          )
+        )
+      ),
+      optional(";"),
+    ),
 
     package_header: $ => seq(
       "package",

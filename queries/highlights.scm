@@ -40,7 +40,7 @@
 [
   ; "import"
   "export"
-  ; "use"
+  "use"
   "package"
 ] @keyword.import
 
@@ -66,6 +66,7 @@
   ; in optional and result types
   "?"
   "!"
+  "/"
 ] @punctuation.delimiter
 
 (func (ident) @function)
@@ -86,6 +87,8 @@
 (variant (field ((ident) @variable.other.member)))
 (member_call (member_operator) (ident) @variable.other.member)
 (resource ("{") (field (ident) @variable.other.member))
+
+(use item: (ident) @type)
 
 ; TODO: Also highlight variables via scoping later (can tree sitter do this?)
 (func (field (ident) @variable.parameter ":"))

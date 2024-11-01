@@ -470,6 +470,10 @@
         {
           "type": "toplevel",
           "named": true
+        },
+        {
+          "type": "use",
+          "named": true
         }
       ]
     }
@@ -565,6 +569,42 @@
         },
         {
           "type": "type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "use",
+    "named": true,
+    "fields": {
+      "interface": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "ident",
+            "named": true
+          }
+        ]
+      },
+      "item": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "ident",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "path",
           "named": true
         }
       ]
@@ -841,6 +881,10 @@
   },
   {
     "type": "true",
+    "named": false
+  },
+  {
+    "type": "use",
     "named": false
   },
   {
