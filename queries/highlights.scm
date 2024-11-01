@@ -4,6 +4,8 @@
   "func"
   "record"
   "resource"
+  ; "enum"
+  ; "variant"
 ] @keyword
 
 [
@@ -54,7 +56,16 @@
 ;  "=>"
   "."
   "?."
+  ; in optional and result types
+  "?"
+  "!"
 ] @punctuation.delimiter
+
+(func (ident) @function)
+((call
+  (ident) @function.call)
+)
+(member_call (member_operator) (call (ident) @method.call))
 
 (type (ident)) @type
 (type (ident) @type.builtin (#match? @type.builtin "^(s8|s16|s32|s64|u8|u16|u32|u64|f32|f64|bool|char|string)$"))
@@ -64,6 +75,9 @@
 
 (assignment_operator) @operator
 (binary_operator) @operator
+[
+  "="
+] @operator
 
 [
   "in"
@@ -74,6 +88,6 @@
 (bool) @constant.builtin.boolean
 [
   "none"
-] @constant.builtin
+] @constant.builtin.null
 
 (comment) @comment.line

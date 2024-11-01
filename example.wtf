@@ -29,6 +29,7 @@ func safe_div(a: s32, b: s32) -> s32! {
 }
 
 export func or_default(original: point?) -> point {
+	if point.is_none() { print("Point is none, setting default!") }
 	original ?= point { x: 0, y: 0, z: 0 }
 
 	return original
