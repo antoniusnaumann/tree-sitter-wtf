@@ -75,6 +75,8 @@
 (struct ("{") (ident) @variable.other.member)
 (member_call (member_operator) (ident) @variable.other.member)
 
+(func (field (ident) @variable.parameter ":"))
+
 (assignment_operator) @operator
 (binary_operator) @operator
 [
