@@ -67,6 +67,7 @@ module.exports = grammar({
       optional(token("export")),
       choice(
         $.func,
+        $.test,
         $.record,
         $.resource,
         $.enum,
@@ -86,6 +87,14 @@ module.exports = grammar({
       separatedTrailing($, choice($.statement, $.func), choice($.newline, ";")),
       "}",
     ),    
+
+    test: $ => seq(
+      token("test"),
+      optional($.string),
+      "{",
+      separatedTrailing($, choice($.statement, $.func), choice($.newline, ";")),
+      "}",
+    ),
  
     record: $ => seq(
       token("record"),
@@ -145,6 +154,7 @@ module.exports = grammar({
       $.assignment,
       $.control,
       $.expression,
+      $.assertion,
     ),
 
     declaration: $ => seq(
@@ -175,6 +185,11 @@ module.exports = grammar({
       $.conditional,
       $.loop,
       $._literal,
+    ),
+
+    assertion: $ => seq(
+      token("assert"),
+      $.expression,
     ),
 
     member_call: $ => prec.left(4, 

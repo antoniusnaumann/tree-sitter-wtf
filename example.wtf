@@ -92,3 +92,11 @@ resource car {
 		print("Honk!")
 	}
 }
+
+test {
+	assert 1 == 1
+}
+
+test "Is 6 an even number?" {
+	assert 6 % 2 == 0 
+}

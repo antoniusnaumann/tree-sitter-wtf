@@ -1,5 +1,20 @@
 [
   {
+    "type": "assertion",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "assignment",
     "named": true,
     "fields": {},
@@ -491,6 +506,10 @@
       "required": true,
       "types": [
         {
+          "type": "assertion",
+          "named": true
+        },
+        {
           "type": "assignment",
           "named": true
         },
@@ -529,6 +548,33 @@
     }
   },
   {
+    "type": "test",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "func",
+          "named": true
+        },
+        {
+          "type": "newline",
+          "named": true
+        },
+        {
+          "type": "statement",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "toplevel",
     "named": true,
     "fields": {},
@@ -550,6 +596,10 @@
         },
         {
           "type": "resource",
+          "named": true
+        },
+        {
+          "type": "test",
           "named": true
         },
         {
@@ -796,6 +846,10 @@
     "named": false
   },
   {
+    "type": "assert",
+    "named": false
+  },
+  {
     "type": "break",
     "named": false
   },
@@ -882,6 +936,10 @@
   {
     "type": "string",
     "named": true
+  },
+  {
+    "type": "test",
+    "named": false
   },
   {
     "type": "throw",
