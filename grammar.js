@@ -67,6 +67,7 @@ module.exports = grammar({
       optional(token("export")),
       choice(
         $.func,
+        $.overload,
         $.test,
         $.record,
         $.resource,
@@ -86,7 +87,15 @@ module.exports = grammar({
       "{",
       separatedTrailing($, choice($.statement, $.func), choice($.newline, ";")),
       "}",
-    ),    
+    ),
+
+    overload: $ => seq(
+      token("overload"),
+      $.ident,
+      "{",
+      separatedTrailing($, $.ident, choice($.newline, ",")),
+      "}" 
+    ),   
 
     test: $ => seq(
       token("test"),

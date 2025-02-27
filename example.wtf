@@ -45,7 +45,20 @@ func call_safe_div(a: s32, b: s32) -> s32!error {
 	return res
 }
 
-func safe_div(a: s32, b: s32) -> s32! {
+overload safe_div {
+	safe_div_u
+	safe_div_s
+}
+
+func safe_div_s(a: s32, b: s32) -> s32! {
+	if b == 0 {
+		throw "Divisor is 0"
+	}
+
+	return a / b
+}
+
+func safe_div_u(a: u32, b: u32) -> u32! {
 	if b == 0 {
 		throw "Divisor is 0"
 	}
