@@ -300,7 +300,9 @@ module.exports = grammar({
       ">=",
       "<",
       ">",
-      "in"
+      "in",
+      "or",
+      "and",
     ),
     
     ident: $ => /[a-z_][a-z0-9_]*/,
