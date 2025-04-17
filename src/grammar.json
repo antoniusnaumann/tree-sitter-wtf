@@ -2275,6 +2275,14 @@
         {
           "type": "STRING",
           "value": "in"
+        },
+        {
+          "type": "STRING",
+          "value": "or"
+        },
+        {
+          "type": "STRING",
+          "value": "and"
         }
       ]
     },
@@ -2351,5 +2359,6 @@
   "precedences": [],
   "externals": [],
   "inline": [],
-  "supertypes": []
+  "supertypes": [],
+  "reserved": {}
 }
